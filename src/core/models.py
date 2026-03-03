@@ -17,7 +17,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Any, Dict, List, Literal, Optional, Tuple
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class Vec3(BaseModel):
@@ -47,6 +47,9 @@ class MapTemplate(str, Enum):
     HUB_AND_SPOKES = "hub_and_spokes"
     ASYMMETRIC_LABYRINTH = "asymmetric_labyrinth"
     GRADIENT = "gradient"
+    OPEN = "open"
+    STANDARD_MAZE = "standard_maze"
+    CHOKEPOINT = "chokepoint"
 
 
 class AgentConfig(BaseModel):
@@ -90,7 +93,9 @@ class AgentConfig(BaseModel):
             "'local-7b', 'gpt-4o', 'gemini', etc., if applicable."
         ),
     )
-    prompt_version: Literal["V0_BASELINE", "V1_COMMUNICATION", "V2_GUIDED"] = Field(
+    prompt_version: Literal[
+        "V0_BASELINE", "V1_COMMUNICATION", "V2_GUIDED", "SELF_STEER"
+    ] = Field(
         "V2_GUIDED",
         description="Prompt policy variant used for controlled experiments.",
     )
@@ -217,8 +222,9 @@ class EnvironmentConfig(BaseModel):
     spawn_mode: str = Field(
         "asymmetric",
         description=(
-            'Controls villain spawn positioning. "asymmetric" = villain_1 close (12 units), '
-            'villain_2 far (60 units); "random" = existing behavior.'
+            'Controls villain spawn positioning. "asymmetric" = villain_1 at asymmetric_close_distance, '
+            'villain_2 at asymmetric_far_distance (map-aware default when None); '
+            '"random" = existing behavior.'
         ),
     )
     asymmetric_close_distance: float = Field(
@@ -226,12 +232,23 @@ class EnvironmentConfig(BaseModel):
         ge=0.0,
         description="Asymmetric mode: villain_1 distance from hero spawn.",
     )
-    asymmetric_far_distance: float = Field(
-        60.0,
-        ge=0.0,
-        description="Asymmetric mode: villain_2 distance from hero spawn.",
+    asymmetric_far_distance: Optional[float] = Field(
+        default=None,
+        description=(
+            "Asymmetric mode: villain_2 distance from hero spawn. "
+            "None applies map-aware defaults: chokepoint 25, standard_maze 20, all other templates 60."
+        ),
     )
 
+    capture_radius: float = Field(
+        2.0,
+        ge=0.0,
+        description=(
+            "Distance threshold (world units) at which a villain captures the hero. "
+            "Mirrored from EpisodeConfig.capture_radius for prompt access; runner stays "
+            "the source of truth for capture detection."
+        ),
+    )
     villain_spawn_radius: float = Field(
         50.0,
         ge=0.0,
@@ -264,6 +281,17 @@ class EnvironmentConfig(BaseModel):
         None,
         description="Optional experiment regime label (e.g. R1, R2, R3) for summary JSON / analysis.",
     )
+
+    @model_validator(mode="after")
+    def _apply_map_aware_asymmetric_far_distance(self) -> EnvironmentConfig:
+        if self.asymmetric_far_distance is None:
+            if self.map_template == MapTemplate.CHOKEPOINT:
+                self.asymmetric_far_distance = 25.0
+            elif self.map_template == MapTemplate.STANDARD_MAZE:
+                self.asymmetric_far_distance = 20.0
+            else:
+                self.asymmetric_far_distance = 60.0
+        return self
 
 
 class AgentState(BaseModel):
@@ -439,6 +467,17 @@ class Observation(BaseModel):
         None,
         description="Strategic chokepoints from map generator (if any).",
     )
+    world_size: Tuple[float, float] = Field(
+        (160.0, 160.0),
+        description="World bounds [width, height], mirrored from EnvironmentConfig for prompt access.",
+    )
+    last_action_feedback: Optional[str] = Field(
+        None,
+        description=(
+            "Optional warning from the previous step (e.g. 'previous target was in an obstacle'). "
+            "Populated by the runner after action validation; surfaced to the LLM in the next prompt."
+        ),
+    )
 
 
 class Action(BaseModel):
@@ -477,6 +516,10 @@ class Action(BaseModel):
     llm_target_position: Optional[Tuple[float, float]] = Field(
         default=None,
         description="World [x, y] target from the LLM when using target-based policy.",
+    )
+    llm_raw_target_position: Optional[Tuple[float, float]] = Field(
+        default=None,
+        description="Parsed [x, y] from LLM JSON before _drop_invalid_llm_target; may differ from llm_target_position.",
     )
     target_description: Optional[str] = Field(
         default=None,
