@@ -18,6 +18,12 @@ __pycache__/
 # Ephemeral experiment outputs (regenerate with scripts)
 logs/
 logs_*/
+output_Baml/
+
+# Validator artifacts (regenerate with scripts/validate_maps.py)
+map_validation_examples.png
+map_validation_results.csv
+docs/map_validation_findings.md
 
 # Optional: uncomment to keep results/ out of git
 # results/
