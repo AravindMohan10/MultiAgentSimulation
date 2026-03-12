@@ -208,6 +208,8 @@ class PerceptionEngine:
                 world_obstacles=[o.model_copy(deep=True) for o in world_state.obstacles],
                 map_template=self._env_config.map_template.value,
                 chokepoint_positions=list(cp) if cp else None,
+                world_size=tuple(self._env_config.world_size),
+                last_action_feedback=None,
             )
             out[agent_id] = obs
         return out
@@ -452,6 +454,9 @@ class PhysicsEngine:
                 len_from_action = max_speed
             intended_mag = float(len_from_action)
 
+            # Pre-physics request (max_speed clamp only; no boundary/obstacle correction).
+            raw_llm_movement: List[float] = [dx_from_action, dy_from_action, 0.0]
+
             # Always use the LLM/policy movement vector (no injected exploration directions).
             dx0 = dx_from_action
             dy0 = dy_from_action
@@ -476,6 +481,7 @@ class PhysicsEngine:
             boundary_adjustment_applied = bool(hit_boundary)
             debug = {
                 **action_debug,
+                "raw_llm_movement": raw_llm_movement,
                 "blocked_movement": blocked_initial,
                 "unstuck_triggered": False,
                 "hit_boundary": hit_boundary,
@@ -620,6 +626,11 @@ class PhysicsEngine:
         )
 
 
+# Perception noise uses a dedicated RNG stream so it cannot advance the placement RNG
+# used in reset() (spawn positions must depend only on env_config.seed and env geometry).
+_PERCEPTION_RNG_OFFSET = 92653
+
+
 class SimulationEngine:
     """
     Central simulation controller.
@@ -640,7 +651,8 @@ class SimulationEngine:
     ) -> None:
         self._env_config = env_config
         self._agent_configs = agent_configs
-        self._rng = random.Random(env_config.seed)
+        # Placement/spawn randomness only — never share this stream with perception or physics.
+        self._placement_rng = random.Random(env_config.seed)
 
         self._perception = PerceptionEngine(
             agent_configs,
@@ -650,7 +662,7 @@ class SimulationEngine:
             observation_noise_std=env_config.observation_noise_std,
             env_config=env_config,
             villain_hero_sight_radius=env_config.villain_hero_sight_radius,
-            rng=self._rng,
+            rng=random.Random(env_config.seed + _PERCEPTION_RNG_OFFSET),
         )
         self._comm = CommunicationRouter(
             agent_configs,
@@ -787,6 +799,234 @@ class SimulationEngine:
         self._env_config.chokepoint_positions = None
         return obstacles
 
+    def _gen_open(self, config: EnvironmentConfig) -> List[Obstacle]:
+        """
+        Near-empty control map:
+        - no interior obstacles
+        - sparse boundary markers only
+        """
+        rng = random.Random(config.seed)
+        w, h = float(config.world_size[0]), float(config.world_size[1])
+        marker_r = float(config.obstacle_radius) * 0.5
+        margin = max(marker_r + 0.5, 1.0)
+        cx, cy = w / 2.0, h / 2.0
+
+        base_markers = [
+            (margin, margin),
+            (w - margin, margin),
+            (margin, h - margin),
+            (w - margin, h - margin),
+            (cx, margin),
+            (cx, h - margin),
+            (margin, cy),
+            (w - margin, cy),
+        ]
+        # Add 0-4 deterministic extra boundary markers (for 8-12 total).
+        extras = [
+            (w * 0.25, margin),
+            (w * 0.75, h - margin),
+            (margin, h * 0.25),
+            (w - margin, h * 0.75),
+        ]
+        rng.shuffle(extras)
+        k_extra = rng.randint(0, 4)
+        pts = base_markers + extras[:k_extra]
+
+        obstacles = [
+            Obstacle(position=Vec3(x=float(px), y=float(py), z=0.0), radius=marker_r)
+            for px, py in pts
+        ]
+        self._env_config.chokepoint_positions = None
+        return obstacles
+
+    def _gen_chokepoint(self, config: EnvironmentConfig) -> List[Obstacle]:
+        """
+        Three explicit bottlenecks across the map.
+
+        We place three vertical chokepoint belts dividing the world into four zones.
+        Each belt is formed by two parallel obstacle rows with a single narrow passage.
+        """
+        obstacles: List[Obstacle] = []
+        w, h = float(config.world_size[0]), float(config.world_size[1])
+        r = float(config.obstacle_radius)
+        spacing = max(r * 1.33, 1.0)
+        # Fixed belts + corridor width: reproducible across seeds.
+        corridor_w = 3.25
+        margin = max(r + 1.0, 2.0)
+        x_centers = [w * 0.25, w * 0.50, w * 0.75]
+        gap_y_fixed = [h * 0.32, h * 0.50, h * 0.68]
+        chokepoints = [(float(x0), float(gy)) for x0, gy in zip(x_centers, gap_y_fixed)]
+        # Two parallel wall lines per side — stay above 0.60 free space with barrier row.
+        pair_offsets = [0.0, r * 1.4]
+        y = margin
+        y_values: List[float] = []
+        while y <= h - margin:
+            y_values.append(y)
+            y += spacing
+
+        for x0, gap_y in zip(x_centers, gap_y_fixed):
+            x1 = x0 - (corridor_w / 2.0)
+            x2 = x0 + (corridor_w / 2.0)
+            for off in pair_offsets:
+                for yy in y_values:
+                    if abs(yy - gap_y) <= (corridor_w / 2.0):
+                        continue
+                    obstacles.append(Obstacle(position=Vec3(x=x1 - off, y=yy, z=0.0), radius=r))
+                    obstacles.append(Obstacle(position=Vec3(x=x2 + off, y=yy, z=0.0), radius=r))
+
+        # Horizontal barriers: full-width slits at belt x_centers (aligned with vertical gaps)
+        # plus slits at mid-columns between belts (w/8). Mid slits use a smaller half-width
+        # than belt slits so barrier rows stay dense enough for validator chokepoint scores;
+        # openings remain wide enough for N–S crossing off the belt columns.
+        hole_half = corridor_w * 0.65 + r * 2.0
+        mid_xs = [w * 0.125, w * 0.375, w * 0.625, w * 0.875]
+        mid_hole_half = max(r * 1.95, hole_half * 0.52)
+        for barrier_y in (h * 0.38, h * 0.62):
+            x = margin
+            while x <= w - margin:
+                at_belt_slit = any(abs(x - xc) < hole_half for xc in x_centers)
+                at_mid_slit = any(abs(x - xc) < mid_hole_half for xc in mid_xs)
+                if not at_belt_slit and not at_mid_slit:
+                    obstacles.append(Obstacle(position=Vec3(x=float(x), y=float(barrier_y), z=0.0), radius=r))
+                x += spacing * 1.28
+
+        self._env_config.chokepoint_positions = chokepoints
+        return obstacles
+
+    def _gen_standard_maze(self, config: EnvironmentConfig) -> List[Obstacle]:
+        """
+        Perfect maze on a fine grid, embedded in a solid outer shell.
+
+        The DFS walls alone leave huge open cell interiors (low BFS detour). We fill the
+        outer band so random pairs mostly route through the maze channels; narrow cells
+        keep detour in the validator's [2, 4] band on the 2.0 resolution grid.
+        """
+        rng = random.Random(config.seed)
+        obstacles: List[Obstacle] = []
+        w, h = float(config.world_size[0]), float(config.world_size[1])
+        r = float(config.obstacle_radius)
+        margin_fill = 7.5
+        step = max(r * 1.05, 0.95)
+        cell = 9.0
+        inner_lo = margin_fill + r * 1.2
+        inner_hi_x = w - margin_fill - r * 1.2
+        inner_hi_y = h - margin_fill - r * 1.2
+        avail_x = max(1.0, inner_hi_x - inner_lo)
+        avail_y = max(1.0, inner_hi_y - inner_lo)
+        gw = int(avail_x / cell)
+        gh = int(avail_y / cell)
+        gw = max(7, min(gw, 9))
+        gh = max(7, min(gh, 9))
+
+        horiz = [[True] * gw for _ in range(gh + 1)]
+        vert = [[True] * (gw + 1) for _ in range(gh)]
+        vis = [[False] * gw for _ in range(gh)]
+
+        def carve(cr: int, cc: int) -> None:
+            vis[cr][cc] = True
+            opts = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+            rng.shuffle(opts)
+            for dr, dc in opts:
+                nr, nc = cr + dr, cc + dc
+                if nr < 0 or nc < 0 or nr >= gh or nc >= gw or vis[nr][nc]:
+                    continue
+                if dr == -1:
+                    horiz[cr][cc] = False
+                elif dr == 1:
+                    horiz[cr + 1][cc] = False
+                elif dc == -1:
+                    vert[cr][cc] = False
+                elif dc == 1:
+                    vert[cr][cc + 1] = False
+                carve(nr, nc)
+
+        carve(0, 0)
+
+        # Fixed small number of extra passages: avoids dead-end traps without adding so many
+        # shortcuts that BFS detour collapses (random 4–9 openings caused huge seed variance).
+        n_loops = 3
+        wall_edges: List[Tuple[str, int, int]] = []
+        for gi in range(1, gh):
+            for gj in range(gw):
+                if horiz[gi][gj]:
+                    wall_edges.append(("h", gi, gj))
+        for gi in range(gh):
+            for gj in range(1, gw):
+                if vert[gi][gj]:
+                    wall_edges.append(("v", gi, gj))
+        rng.shuffle(wall_edges)
+        for k in range(min(len(wall_edges), n_loops)):
+            kind, gi, gj = wall_edges[k]
+            if kind == "h":
+                horiz[gi][gj] = False
+            else:
+                vert[gi][gj] = False
+
+        def stamp_segment(x0: float, y0: float, x1: float, y1: float) -> None:
+            ln = math.hypot(x1 - x0, y1 - y0)
+            if ln < 1e-9:
+                return
+            n = max(1, int(math.ceil(ln / step)))
+            for i in range(n + 1):
+                t = float(i) / float(n)
+                px = x0 + (x1 - x0) * t
+                py = y0 + (y1 - y0) * t
+                obstacles.append(Obstacle(position=Vec3(x=px, y=py, z=0.0), radius=r))
+
+        x0 = inner_lo + (avail_x - gw * cell) * 0.5
+        y0 = inner_lo + (avail_y - gh * cell) * 0.5
+        x1 = x0 + gw * cell
+        y1 = y0 + gh * cell
+
+        fill_pitch = 2.58
+        fx = fill_pitch * 0.5
+        while fx < w:
+            fy = fill_pitch * 0.5
+            while fy < h:
+                if not (x0 - r <= fx <= x1 + r and y0 - r <= fy <= y1 + r):
+                    obstacles.append(Obstacle(position=Vec3(x=fx, y=fy, z=0.0), radius=r))
+                fy += fill_pitch
+            fx += fill_pitch
+
+        for gj in range(gw):
+            stamp_segment(x0 + gj * cell, y0, x0 + (gj + 1) * cell, y0)
+            stamp_segment(x0 + gj * cell, y1, x0 + (gj + 1) * cell, y1)
+        for gi in range(gh):
+            stamp_segment(x0, y0 + gi * cell, x0, y0 + (gi + 1) * cell)
+            stamp_segment(x1, y0 + gi * cell, x1, y0 + (gi + 1) * cell)
+
+        for gi in range(1, gh):
+            for gj in range(gw):
+                if horiz[gi][gj]:
+                    xa = x0 + gj * cell
+                    xb = x0 + (gj + 1) * cell
+                    yy = y0 + gi * cell
+                    stamp_segment(xa, yy, xb, yy)
+
+        for gi in range(gh):
+            for gj in range(1, gw):
+                if vert[gi][gj]:
+                    xx = x0 + gj * cell
+                    ya = y0 + gi * cell
+                    yb = y0 + (gi + 1) * cell
+                    stamp_segment(xx, ya, xx, yb)
+
+        cx = x0 + (gw * cell) / 2.0
+        cy = y0 + (gh * cell) / 2.0
+        chokepoints = [
+            (cx, y0),
+            (cx, y1),
+            (x0, cy),
+            (x1, cy),
+            (x0 + cell * (gw / 4.0), y0 + cell * (gh / 4.0)),
+            (x0 + cell * (3.0 * gw / 4.0), y0 + cell * (gh / 4.0)),
+            (x0 + cell * (gw / 4.0), y0 + cell * (3.0 * gh / 4.0)),
+            (x0 + cell * (3.0 * gw / 4.0), y0 + cell * (3.0 * gh / 4.0)),
+        ]
+
+        self._env_config.chokepoint_positions = chokepoints
+        return obstacles
+
     def _filter_spawn_unsafe(
         self, obstacles: List[Obstacle], spawn_positions: List[Vec3]
     ) -> List[Obstacle]:
@@ -813,6 +1053,12 @@ class SimulationEngine:
             raw = self._gen_asymmetric_labyrinth(cfg)
         elif template == MapTemplate.GRADIENT:
             raw = self._gen_gradient(cfg)
+        elif template == MapTemplate.OPEN:
+            raw = self._gen_open(cfg)
+        elif template == MapTemplate.CHOKEPOINT:
+            raw = self._gen_chokepoint(cfg)
+        elif template == MapTemplate.STANDARD_MAZE:
+            raw = self._gen_standard_maze(cfg)
         else:
             raw = _generate_scattered_obstacles(
                 rng=random.Random(cfg.seed),
@@ -832,6 +1078,12 @@ class SimulationEngine:
             return self._gen_asymmetric_labyrinth(cfg)
         if template == MapTemplate.GRADIENT:
             return self._gen_gradient(cfg)
+        if template == MapTemplate.OPEN:
+            return self._gen_open(cfg)
+        if template == MapTemplate.CHOKEPOINT:
+            return self._gen_chokepoint(cfg)
+        if template == MapTemplate.STANDARD_MAZE:
+            return self._gen_standard_maze(cfg)
         return _generate_scattered_obstacles(
             rng=random.Random(cfg.seed),
             world_size=tuple(cfg.world_size),
@@ -966,12 +1218,52 @@ class SimulationEngine:
     ) -> tuple[float, float]:
         cfg = self._env_config
         if rng is None:
-            rng = self._rng
+            rng = self._placement_rng
         existing = list(existing_spawns or [])
         hero_x, hero_y = float(hero_pos[0]), float(hero_pos[1])
         w, h = float(cfg.world_size[0]), float(cfg.world_size[1])
         margin = 10.0
         world_w, world_h = w, h
+
+        # SCATTERED-specific spawn constraints: keep villains close enough to
+        # interact early (avoids the 57+ unit dead-air starts) and require at
+        # least one villain to be within LOS distance of the hero.
+        if cfg.map_template == MapTemplate.SCATTERED:
+            vision_r = float(cfg.base_visibility_radius)
+            if cfg.visibility_radius is not None:
+                vision_r = min(vision_r, float(cfg.visibility_radius))
+            if villain_index == 0:
+                d_min, d_max = 15.0, 25.0
+            else:
+                d_min, d_max = 25.0, 40.0
+            for _ in range(50):
+                radius = rng.uniform(d_min, d_max)
+                angle = rng.uniform(0.0, 2.0 * math.pi)
+                x = hero_x + radius * math.cos(angle)
+                y = hero_y + radius * math.sin(angle)
+                x = max(margin, min(world_w - margin, x))
+                y = max(margin, min(world_h - margin, y))
+                too_close = any(math.hypot(x - sx, y - sy) < 10.0 for sx, sy in existing)
+                if too_close:
+                    continue
+                # "At least one villain has LOS" constraint:
+                # v1 (close pursuer) is always within 15-25 of hero, so any
+                # vision_r >= 25 satisfies it for v1 alone. For v2 we require
+                # either v1 or v2 itself to be within vision_r of the hero.
+                if villain_index == 0:
+                    if math.hypot(x - hero_x, y - hero_y) <= vision_r:
+                        return (x, y)
+                    # Accept anyway if we ran out of retries; loop will keep trying.
+                    continue
+                # villain_index == 1: at-least-one-with-LOS check across both.
+                v1_dist = (
+                    math.hypot(existing[0][0] - hero_x, existing[0][1] - hero_y)
+                    if existing
+                    else float("inf")
+                )
+                v2_dist = math.hypot(x - hero_x, y - hero_y)
+                if min(v1_dist, v2_dist) <= vision_r:
+                    return (x, y)
 
         if getattr(cfg, "spawn_mode", "random") == "asymmetric":
             close = float(getattr(cfg, "asymmetric_close_distance", 12.0))
@@ -1028,8 +1320,8 @@ class SimulationEngine:
             c = hero_cfgs[0]
             # Spawn near center with bounded random offset.
             cx, cy = float(w) * 0.5, float(h) * 0.5
-            offset_x = float(self._rng.uniform(-10.0, 10.0))
-            offset_y = float(self._rng.uniform(-10.0, 10.0))
+            offset_x = float(self._placement_rng.uniform(-10.0, 10.0))
+            offset_y = float(self._placement_rng.uniform(-10.0, 10.0))
             margin = 5.0
             hx = max(margin, min(float(w) - margin, cx + offset_x))
             hy = max(margin, min(float(h) - margin, cy + offset_y))
@@ -1060,7 +1352,7 @@ class SimulationEngine:
                 )
                 if use_structured_v2 and villain_positions:
                     x, y = self._place_asymmetric_v2_structured_map(
-                        hero_pos, villain_positions[0], self._rng
+                        hero_pos, villain_positions[0], self._placement_rng
                     )
                 else:
                     x, y = self._spawn_villain_near_hero(
@@ -1068,13 +1360,13 @@ class SimulationEngine:
                         villain_index=i,
                         max_radius=spawn_radius,
                         min_radius=20.0,
-                        rng=self._rng,
+                        rng=self._placement_rng,
                         existing_spawns=villain_positions,
                     )
             else:
                 margin = 10.0
-                x = self._rng.uniform(margin, float(w) - margin)
-                y = self._rng.uniform(margin, float(h) - margin)
+                x = self._placement_rng.uniform(margin, float(w) - margin)
+                y = self._placement_rng.uniform(margin, float(h) - margin)
 
             agents[c.id] = AgentState(
                 id=c.id,
