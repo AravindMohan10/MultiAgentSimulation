@@ -144,12 +144,22 @@ def _get_nearby_obstacle_info(
             math.hypot(ox - float(cp[0]), oy - float(cp[1])) < 8.0
             for cp in chokepoint_positions
         )
+        # Closest point on the obstacle's perimeter from the agent — gives the
+        # LLM a valid "cover" target alongside, rather than inside, the obstacle.
+        radius = float(obs.radius)
+        if dist > 1e-6:
+            nx, ny = (ax - ox) / dist, (ay - oy) / dist
+        else:
+            nx, ny = 1.0, 0.0
+        safe_x = ox + nx * radius
+        safe_y = oy + ny * radius
         nearby.append(
             {
                 "pos": [round(ox, 1), round(oy, 1)],
                 "dist": round(dist, 1),
                 "blocks_los_to_hero": blocks_los,
                 "near_chokepoint": near_chokepoint,
+                "safe_approach_pos": [round(safe_x, 1), round(safe_y, 1)],
             }
         )
     nearby.sort(key=lambda x: float(x["dist"]))
@@ -222,12 +232,15 @@ def serialize_observation(
         max_obstacles=6,
     )
     mt = observation.map_template
+    world_w = float(observation.world_size[0])
+    world_h = float(observation.world_size[1])
     map_context = {
         "template": mt,
         "chokepoints": [
             {"pos": [float(cp[0]), float(cp[1])], "label": _label_chokepoint(i, mt)}
             for i, cp in enumerate(cp_list)
         ],
+        "world_size": [world_w, world_h],
     }
 
     payload: Dict[str, Any] = {
@@ -237,6 +250,7 @@ def serialize_observation(
         "msgs": [_compress_message(m) for m in _sort_messages(observation.incoming_messages)],
         "nearby_obstacles": nearby,
         "map_context": map_context,
+        "last_action_feedback": observation.last_action_feedback,
         # Dynamic partial observability hint for the model.
         "hero_visible": bool(hero_visible),
         "hero_vision_instruction": (
@@ -380,6 +394,25 @@ def build_system_prompt(
         "\n"
         "No explanations. No extra text.\n"
     )
+    if config.agent_type == AgentType.HERO and environment_config is not None:
+        capture_r = float(getattr(environment_config, "capture_radius", 2.0))
+        world_w = float(environment_config.world_size[0])
+        world_h = float(environment_config.world_size[1])
+        base += (
+            "\nHERO SURVIVAL OBJECTIVE:\n"
+            f"Your goal is to SURVIVE for the entire episode duration.\n"
+            f"You win by maintaining distance > {capture_r:g} units from ALL villains for every step.\n"
+            "\n"
+            "MOVEMENT RULES:\n"
+            f"- Your target_position MUST be inside world bounds [0, {world_w:g}] x [0, {world_h:g}]. "
+            "Never propose a target outside these bounds.\n"
+            "- When near a boundary (within 15 units), move PARALLEL to the wall or back toward the map center. "
+            "Do NOT target positions beyond the wall.\n"
+            "- To use an obstacle as cover, target a position BESIDE the obstacle "
+            "(use safe_approach_pos from nearby_obstacles), never the obstacle center.\n"
+            "- If last_action_feedback contains a warning, your previous target was invalid. "
+            "Choose a completely different target this step.\n"
+        )
     if config.agent_type == AgentType.VILLAIN and not config.disable_messages:
         base += (
             "\nCOMMUNICATION (VILLAIN only):\n"
@@ -388,6 +421,13 @@ def build_system_prompt(
             "• payload: exactly five numbers — hero world position (or 0,0 if unseen), confidence 0..1, your position.\n"
             "You may also use the shorthand list form [hero_x, hero_y, confidence, self_x, self_y] as \"message\" "
             "(the simulator accepts both).\n"
+            "\n"
+            "COMMUNICATION RULES:\n"
+            "- If you receive a message in obs.msgs containing hero coordinates "
+            "(non-zero hero_x, hero_y with confidence > 0), you MUST navigate toward those coordinates "
+            "immediately, unless you currently have direct visual contact with the hero.\n"
+            "- Do NOT continue searching randomly if you have received hero position intel from a teammate.\n"
+            "- Treat teammate messages as high-priority navigation orders.\n"
         )
     if (
         config.prompt_version == "V2_GUIDED"
