@@ -478,7 +478,7 @@ class LLMAgent(BaseAgent):
         self._environment_config = environment_config
         self._timeout_seconds = max(0.1, float(timeout_seconds))
         self._max_retries = max(0, int(max_retries))
-        self._output_parser = os.environ.get("LLM_OUTPUT_PARSER", "pydantic").strip().lower()
+        self._output_parser = os.environ.get("LLM_OUTPUT_PARSER", "baml").strip().lower()
 
         if session is None:
             self._session = AgentSession(
@@ -725,7 +725,10 @@ class LLMAgent(BaseAgent):
             mv = action.movement
             mv2 = _apply_boundary_constraint(mv, px, py, world_w, world_h)
             new_src = src
-            if (mv2.x != mv.x or mv2.y != mv.y) and src != "stuck_halted":
+            actually_clamped = (
+                abs(mv2.x - mv.x) > 1e-6 or abs(mv2.y - mv.y) > 1e-6
+            )
+            if actually_clamped and src != "stuck_halted":
                 new_src = "boundary_override"
             md = dict(action.movement_debug or {})
             md["final_movement"] = [float(mv2.x), float(mv2.y), 0.0]
@@ -753,7 +756,10 @@ class LLMAgent(BaseAgent):
                 new_src = "llm_vector_legacy"
 
         mv2 = _apply_boundary_constraint(mv, px, py, world_w, world_h)
-        if mv2.x != mv.x or mv2.y != mv.y:
+        actually_clamped = (
+            abs(mv2.x - mv.x) > 1e-6 or abs(mv2.y - mv.y) > 1e-6
+        )
+        if actually_clamped:
             new_src = "boundary_override"
 
         md = dict(action.movement_debug or {})
@@ -1057,8 +1063,8 @@ class LLMAgent(BaseAgent):
         """
         Invoke LLM and parse to LLMActionOutput.
 
-        LLM_OUTPUT_PARSER=pydantic (default): Groq client + manual JSON repair.
-        LLM_OUTPUT_PARSER=baml: BAML ChooseAgentAction (same system/user prompts).
+        LLM_OUTPUT_PARSER=baml (default): BAML ChooseAgentAction, typed AgentAction.
+        LLM_OUTPUT_PARSER=pydantic: legacy Groq client + manual JSON repair (debug only).
         """
         if self._output_parser == "baml":
             from .baml_parser import invoke_baml_choose_action
