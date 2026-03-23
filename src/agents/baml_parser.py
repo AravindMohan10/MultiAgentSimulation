@@ -7,9 +7,8 @@ only parsing + LLM HTTP is delegated to BAML.
 
 from __future__ import annotations
 
-from typing import Any, List, Optional, Tuple
-
 import re
+from typing import Any, List, Optional, Tuple
 
 from .schema import LLMActionOutput, LLMMessagePayload, normalize_intent_string
 
@@ -52,6 +51,50 @@ def _optional_movement(mv: Any) -> Optional[List[float]]:
     return out
 
 
+def extract_baml_raw_output(exc: BaseException) -> Optional[str]:
+    """
+    Recover the model's raw text from a BAML validation error.
+
+    Self-steer prompts ask for snake_case intents (``pursue_memory``) while the
+    BAML enum expects PascalCase (``PursueMemory``). The LLM often follows the
+    prompt; this helper lets us fall back to pydantic parsing on that text.
+    """
+    raw = getattr(exc, "raw_output", None)
+    if isinstance(raw, str) and raw.strip():
+        return raw.strip()
+
+    text = str(exc)
+    for marker in ("Raw Response:", "raw_output="):
+        idx = text.find(marker)
+        if idx < 0:
+            continue
+        chunk = text[idx + len(marker) :].strip()
+        if chunk.startswith("```"):
+            end_fence = chunk.find("```", 3)
+            if end_fence > 0:
+                inner = chunk[3:end_fence].strip()
+                if inner.lower().startswith("json"):
+                    inner = inner[4:].strip()
+                if inner:
+                    return inner
+        if chunk.startswith("{") or chunk.startswith("["):
+            return chunk.split(", prompt=")[0].strip().rstrip("`")
+
+    if "```json" in text:
+        start = text.find("```json") + 7
+        end = text.find("```", start)
+        if end > start:
+            return text[start:end].strip()
+    if "{" in text:
+        from .llm_agent import _extract_json_candidate
+
+        try:
+            return _extract_json_candidate(text)
+        except (ValueError, TypeError):
+            pass
+    return None
+
+
 def baml_action_to_llm_output(baml_action: Any) -> LLMActionOutput:
     """Convert generated AgentAction to pydantic LLMActionOutput."""
     msg_out: Optional[LLMMessagePayload] = None
@@ -71,16 +114,35 @@ def baml_action_to_llm_output(baml_action: Any) -> LLMActionOutput:
     )
 
 
-def invoke_baml_choose_action(system_prompt: str, user_prompt: str) -> Tuple[LLMActionOutput, str]:
+def invoke_baml_choose_action(
+    system_prompt: str,
+    user_prompt: str,
+    *,
+    pydantic_fallback: bool = True,
+) -> Tuple[LLMActionOutput, str]:
     """
-    Call BAML ChooseAgentAction; return (LLMActionOutput, synthetic raw_response for logs).
+    Call BAML ChooseAgentAction; return (LLMActionOutput, raw_response for logs).
+
+    When ``pydantic_fallback`` is True (default), BAML enum mismatches (e.g.
+    snake_case intent from self-steer prompts) recover via pydantic parsing of
+    the model's raw JSON instead of failing the step.
     """
     from baml_client.baml_client.sync_client import b
 
-    result = b.ChooseAgentAction(system_prompt, user_prompt)
+    try:
+        result = b.ChooseAgentAction(system_prompt, user_prompt)
+    except Exception as exc:
+        if not pydantic_fallback:
+            raise
+        raw_text = extract_baml_raw_output(exc)
+        if not raw_text:
+            raise
+        from .llm_agent import _parse_llm_output_with_raw
+
+        parsed, _ = _parse_llm_output_with_raw(raw_text)
+        return parsed, raw_text.strip()
+
     out = baml_action_to_llm_output(result)
-    raw_intent = _intent_to_str(getattr(result, "intent", None))
-    # Serialize parsed object for raw_llm_response field (audit trail).
     try:
         raw_json = result.model_dump_json() if hasattr(result, "model_dump_json") else str(result)
     except Exception:
