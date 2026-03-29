@@ -16,6 +16,7 @@ from typing import Dict
 from ..core.models import AgentConfig, EnvironmentConfig
 from .base import Agent
 from .baseline_agent import RuleBasedAgent
+from .greedy_agent import GreedyPursuerAgent
 from .llm_agent import LLMClient, LLMAgent
 
 
@@ -44,6 +45,14 @@ def create_agent(
         Required for ``strategy_mode="rule_based"`` (world bounds, sight radius semantics).
     """
     strategy = (config.strategy_mode or "").lower()
+
+    if strategy == "greedy_baseline":
+        if environment_config is None:
+            raise ValueError(
+                f"Agent {config.id!r} uses strategy_mode='greedy_baseline' but environment_config "
+                "was not provided to create_agent()."
+            )
+        return GreedyPursuerAgent(agent_config=config, env_config=environment_config)
 
     if strategy == "rule_based":
         if environment_config is None:
