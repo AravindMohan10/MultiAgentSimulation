@@ -1,0 +1,39 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+.cursor/
+
+# Ephemeral experiment outputs (regenerate with scripts)
+logs/
+logs_*/
+
+# Optional: uncomment to keep results/ out of git
+# results/
+
+# Large media files
+*.mov
+*.mp4
+
+# Virtual environments
+venv/
+moodenv/
+.venv/
+env/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+results/
