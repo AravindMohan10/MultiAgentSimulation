@@ -19,9 +19,13 @@ Unlike static benchmarks that models can memorize, dynamic simulation environmen
 
 ## Visualizations
 
-**Hub-and-spokes with communication** — villains coordinate and converge on the hero:
+**Hub-and-spokes WITH communication** — villains share position data and converge on the hero:
 
 ![Hub with communication](assets/hub_with_comm.gif)
+
+**Hub-and-spokes WITHOUT communication** — one villain pursues, the other explores independently:
+
+![Hub without communication](assets/hub_no_comm.gif)
 
 **Scattered map with communication** — open terrain, different pursuit dynamics:
 
