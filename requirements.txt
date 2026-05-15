@@ -5,3 +5,4 @@ pandas
 matplotlib
 pygame
 google-genai>=1.0.0
+baml-py>=0.222.0

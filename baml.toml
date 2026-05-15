@@ -1,0 +1,7 @@
+[project]
+name = "multi_agent_simulation"
+version = "0.1.0"
+
+[generator]
+default = "python"
+output_dir = "baml_client"

@@ -478,6 +478,7 @@ class LLMAgent(BaseAgent):
         self._environment_config = environment_config
         self._timeout_seconds = max(0.1, float(timeout_seconds))
         self._max_retries = max(0, int(max_retries))
+        self._output_parser = os.environ.get("LLM_OUTPUT_PARSER", "pydantic").strip().lower()
 
         if session is None:
             self._session = AgentSession(
@@ -1052,6 +1053,26 @@ class LLMAgent(BaseAgent):
             self._timeout_seconds,
         )
 
+    def _call_and_parse(self, bundle: PromptBundle) -> tuple[LLMActionOutput, str, Optional[str]]:
+        """
+        Invoke LLM and parse to LLMActionOutput.
+
+        LLM_OUTPUT_PARSER=pydantic (default): Groq client + manual JSON repair.
+        LLM_OUTPUT_PARSER=baml: BAML ChooseAgentAction (same system/user prompts).
+        """
+        if self._output_parser == "baml":
+            from .baml_parser import invoke_baml_choose_action
+
+            def _baml_call() -> tuple[LLMActionOutput, str]:
+                return invoke_baml_choose_action(bundle.system_prompt, bundle.user_prompt)
+
+            parsed, raw_text = _run_with_timeout(_baml_call, self._timeout_seconds)
+            return parsed, raw_text, parsed.intent
+
+        raw_response = self._invoke(bundle)
+        parsed, raw_intent_str = _parse_llm_output_with_raw(raw_response)
+        return parsed, raw_response, raw_intent_str
+
     def _drop_invalid_llm_target(self, observation: Observation, action: Action) -> Action:
         """
         Strip bogus LLM ``target_position`` before movement execution:
@@ -1107,10 +1128,11 @@ class LLMAgent(BaseAgent):
 
         for attempt in range(self._max_retries + 1):
             try:
-                raw_response = self._invoke(bundle)
-                last_raw_response = raw_response
-                parsed, raw_intent_str = _parse_llm_output_with_raw(raw_response)
+                parsed, last_raw_response, raw_intent_str = self._call_and_parse(bundle)
                 action = llm_action_to_action(self.id, parsed)
+                action = action.model_copy(
+                    update={"llm_raw_target_position": action.llm_target_position}
+                )
                 action = self._drop_invalid_llm_target(observation, action)
                 if self.config.disable_messages:
                     action = action.model_copy(update={"message": None})
@@ -1143,7 +1165,7 @@ class LLMAgent(BaseAgent):
                     time=observation.time,
                     observation=observation,
                     prompt=combined_prompt,
-                    raw_response=raw_response,
+                    raw_response=last_raw_response,
                     action=action,
                     valid=True,
                     error=None,
