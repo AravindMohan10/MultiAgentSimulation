@@ -1,0 +1,4361 @@
+{
+  "episodeId": "self_steer_scattered_nv2_seed0",
+  "worldSize": [
+    160.0,
+    160.0
+  ],
+  "captureRadius": 2.0,
+  "mapTemplate": "scattered",
+  "seed": 0,
+  "outcome": "hero_escaped",
+  "steps": 80,
+  "winnerTeam": "heroes",
+  "obstacles": [
+    {
+      "x": 134.07423068943257,
+      "y": 120.49884126162749,
+      "r": 1.5
+    },
+    {
+      "x": 67.52973819044267,
+      "y": 42.14992979599525,
+      "r": 1.5
+    },
+    {
+      "x": 81.77013125487154,
+      "y": 65.07465957971505,
+      "r": 1.5
+    },
+    {
+      "x": 124.55637847845931,
+      "y": 49.12009799439161,
+      "r": 1.5
+    },
+    {
+      "x": 76.32572180191987,
+      "y": 93.0909801944399,
+      "r": 1.5
+    },
+    {
+      "x": 144.07372297566764,
+      "y": 80.73583636333026,
+      "r": 1.5
+    },
+    {
+      "x": 45.7485415707535,
+      "y": 120.16126005268416,
+      "r": 1.5
+    },
+    {
+      "x": 98.58393247802707,
+      "y": 40.82949559390317,
+      "r": 1.5
+    },
+    {
+      "x": 144.33016218701368,
+      "y": 155.79731973791152,
+      "r": 1.5
+    },
+    {
+      "x": 128.70410605146458,
+      "y": 143.14005421901447,
+      "r": 1.5
+    },
+    {
+      "x": 50.19316838313522,
+      "y": 116.0835844768402,
+      "r": 1.5
+    },
+    {
+      "x": 142.61761121097499,
+      "y": 108.88547731072428,
+      "r": 1.5
+    },
+    {
+      "x": 75.626406326076,
+      "y": 17.310089666733433,
+      "r": 1.5
+    },
+    {
+      "x": 69.66497816624404,
+      "y": 97.40925483067686,
+      "r": 1.5
+    },
+    {
+      "x": 144.84273535835,
+      "y": 153.25719974000913,
+      "r": 1.5
+    },
+    {
+      "x": 76.39053491877658,
+      "y": 137.3536586601475,
+      "r": 1.5
+    },
+    {
+      "x": 42.397292731537625,
+      "y": 127.8893688410445,
+      "r": 1.5
+    },
+    {
+      "x": 87.64579070218753,
+      "y": 3.704546925750976,
+      "r": 1.5
+    },
+    {
+      "x": 114.4936357654208,
+      "y": 64.1152961292102,
+      "r": 1.5
+    },
+    {
+      "x": 131.0006614122726,
+      "y": 106.40005259340059,
+      "r": 1.5
+    },
+    {
+      "x": 1.6794226323652397,
+      "y": 78.99172503505596,
+      "r": 1.5
+    },
+    {
+      "x": 137.7136357523666,
+      "y": 39.79400767127972,
+      "r": 1.5
+    },
+    {
+      "x": 52.55708495134024,
+      "y": 138.16398344105878,
+      "r": 1.5
+    },
+    {
+      "x": 31.497533365875316,
+      "y": 90.59918627744548,
+      "r": 1.5
+    },
+    {
+      "x": 38.96270079258957,
+      "y": 153.4038192955525,
+      "r": 1.5
+    }
+  ],
+  "frames": [
+    {
+      "step": 1,
+      "time": 0.5,
+      "heroPosition": [
+        86.88841605311082,
+        83.95908805898941,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88841605311082,
+          "y": 83.95908805898941,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            60.159
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 85.86906828007729,
+          "y": 103.33624338021963,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            85.16
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 60.87604313727235,
+          "y": 103.5330378612681,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "time": 1.0,
+      "heroPosition": [
+        86.88839503952092,
+        82.7590880591734,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88839503952092,
+          "y": 82.7590880591734,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            60.2
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 85.92168516133738,
+          "y": 102.33762860774405,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            83.96
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 61.583149917272344,
+          "y": 104.2401446412681,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "time": 1.5,
+      "heroPosition": [
+        86.88837402593101,
+        81.55908805935738,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88837402593101,
+          "y": 81.55908805935738,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            60.2
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 85.97108504645263,
+          "y": 101.33884952739115,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            82.76
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 62.38163276302313,
+          "y": 103.63812707919725,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            85.16
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "time": 2.0,
+      "heroPosition": [
+        86.88835301234111,
+        80.35908805954136,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88835301234111,
+          "y": 80.35908805954136,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            60.2
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.01749446090444,
+          "y": 100.33992702476633,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            81.56
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 63.161391697088504,
+          "y": 103.012047208298,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            83.96
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "time": 2.5,
+      "heroPosition": [
+        86.88833199875121,
+        79.15908805972535,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88833199875121,
+          "y": 79.15908805972535,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            60.2
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.06112198747078,
+          "y": 99.34087915858288,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            80.36
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 63.92202080734242,
+          "y": 102.36286051971425,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            82.76
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "time": 3.0,
+      "heroPosition": [
+        86.8882877326842,
+        77.9590880605418,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.8882877326842,
+          "y": 77.9590880605418,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            70.159
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.11493406326531,
+          "y": 98.3423280780173,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            83.96
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 64.6631983373713,
+          "y": 101.69155144858509,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            81.56
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 7,
+      "time": 3.5,
+      "heroPosition": [
+        86.8882682902883,
+        76.7590880606993,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.8882682902883,
+          "y": 76.7590880606993,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            60.2
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.16461270712362,
+          "y": 97.3435628241441,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            82.76
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 65.38468583946437,
+          "y": 100.99912399077921,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            80.36
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "time": 4.0,
+      "heroPosition": [
+        86.88821463301821,
+        75.55908806189892,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88821463301821,
+          "y": 75.55908806189892,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            70.759
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.21052264774323,
+          "y": 96.34461724136578,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            81.56
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 66.16848179804437,
+          "y": 100.37810555682282,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            83.96
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "time": 4.5,
+      "heroPosition": [
+        86.88816312200112,
+        74.35908806300449,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 86.88816312200112,
+          "y": 74.35908806300449,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            70.559
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.25299249752558,
+          "y": 95.34551949246458,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            80.36
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 66.93033374886119,
+          "y": 99.73035436613567,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            82.76
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "time": 5.0,
+      "heroPosition": [
+        87.59526990200112,
+        73.65198128300449,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 87.59526990200112,
+          "y": 73.65198128300449,
+          "intent": "flee_threat",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.30885405317036,
+          "y": 94.34708096826745,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            83.96
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 67.66980888762599,
+          "y": 99.0571704988685,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            81.56
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 11,
+      "time": 5.5,
+      "heroPosition": [
+        88.59526990200112,
+        73.65198128300449,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 88.59526990200112,
+          "y": 73.65198128300449,
+          "intent": "flee_threat",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.35022142882283,
+          "y": 93.34793696451642,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            80.359
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 68.38660109842276,
+          "y": 98.35988366653831,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            80.36
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 12,
+      "time": 6.0,
+      "heroPosition": [
+        88.71809623424532,
+        72.45828379531866,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 88.71809623424532,
+          "y": 72.45828379531866,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            90.0,
+            60.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.4636976075375,
+          "y": 92.35439624725099,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            88.6,
+            73.65
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 69.00076361676014,
+          "y": 99.14906324120398,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.89,
+            83.96
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 13,
+      "time": 6.5,
+      "heroPosition": [
+        88.71808179859643,
+        73.65828379523184,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 88.71808179859643,
+          "y": 73.65828379523184,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            88.718,
+            80.458
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.57692355590578,
+          "y": 91.36082698211841,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            88.595,
+            73.652
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 69.7250567249363,
+          "y": 99.83855544090497,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            86.888,
+            80.359
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 14,
+      "time": 7.0,
+      "heroPosition": [
+        88.83021673625093,
+        72.46353455134958,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 88.83021673625093,
+          "y": 72.46353455134958,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            90.0,
+            60.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.69711793719712,
+          "y": 90.36807660528343,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            88.72,
+            73.66
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 70.30975274867315,
+          "y": 99.0273029772253,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            88.6,
+            73.65
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 15,
+      "time": 7.5,
+      "heroPosition": [
+        88.94235167390543,
+        71.26878530746733,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 88.94235167390543,
+          "y": 71.26878530746733,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            90.0,
+            60.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.81538376113141,
+          "y": 89.37509463420383,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            88.83,
+            72.46
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 71.12105917624665,
+          "y": 99.61192411999892,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            88.595,
+            73.652
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 16,
+      "time": 8.0,
+      "heroPosition": [
+        89.05448661155994,
+        70.07403606358507,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.05448661155994,
+          "y": 70.07403606358507,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            90.0,
+            60.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 86.93193309800647,
+          "y": 88.38190973093859,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            88.94,
+            71.27
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 71.68231396069885,
+          "y": 98.78428104056823,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            88.72,
+            73.66
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 17,
+      "time": 8.5,
+      "heroPosition": [
+        89.16662154921444,
+        68.87928681970281,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.16662154921444,
+          "y": 68.87928681970281,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            90.0,
+            60.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.04683313308814,
+          "y": 87.38853267164124,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.05,
+            70.07
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 72.22812780479919,
+          "y": 97.94637457347993,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            88.83,
+            72.46
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 18,
+      "time": 9.0,
+      "heroPosition": [
+        89.21954098628186,
+        67.68045424874869,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21954098628186,
+          "y": 67.68045424874869,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            90.0,
+            50.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.1607986135908,
+          "y": 86.39504796151542,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.17,
+            68.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 72.75902051960158,
+          "y": 97.0989355341563,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            88.94,
+            71.27
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 19,
+      "time": 9.5,
+      "heroPosition": [
+        89.21957214025866,
+        66.4804542491531,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21957214025866,
+          "y": 66.4804542491531,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            50.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.27016775118013,
+          "y": 85.40104675842612,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            67.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 73.27523048708466,
+          "y": 96.2424734687552,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.05,
+            70.07
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 20,
+      "time": 10.0,
+      "heroPosition": [
+        89.21960329423547,
+        65.28045424955751,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21960329423547,
+          "y": 65.28045424955751,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            50.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.37267586740232,
+          "y": 84.40631459039868,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            66.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 73.77752863390168,
+          "y": 95.37777897258664,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.17,
+            68.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 21,
+      "time": 10.5,
+      "heroPosition": [
+        89.21963444821228,
+        64.08045424996192,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21963444821228,
+          "y": 64.08045424996192,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            50.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.46881395663058,
+          "y": 83.41094658418211,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            65.28
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 74.26449190754735,
+          "y": 94.50435652604642,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            67.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 22,
+      "time": 11.0,
+      "heroPosition": [
+        89.21965266473514,
+        62.880454250100186,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21965266473514,
+          "y": 62.880454250100186,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            40.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.55903428814212,
+          "y": 82.41502475402578,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            64.08
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 74.7353052366321,
+          "y": 93.62212367177487,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            66.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 23,
+      "time": 11.5,
+      "heroPosition": [
+        89.219670881258,
+        61.680454250238455,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.219670881258,
+          "y": 61.680454250238455,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            40.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.6437536227485,
+          "y": 81.41861989938894,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            62.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 73.84485426366018,
+          "y": 93.16704448665061,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            65.28
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 24,
+      "time": 12.0,
+      "heroPosition": [
+        89.21968909778086,
+        60.480454250376724,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21968909778086,
+          "y": 60.480454250376724,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            40.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.7233561711802,
+          "y": 80.42179321722038,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            61.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 74.31217501383814,
+          "y": 92.28295664234264,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            64.08
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 25,
+      "time": 12.5,
+      "heroPosition": [
+        89.21970731430372,
+        59.28045425051499,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21970731430372,
+          "y": 59.28045425051499,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            40.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.79819630924445,
+          "y": 79.42459767283877,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 74.76438905739236,
+          "y": 91.3910471969322,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            62.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 26,
+      "time": 13.0,
+      "heroPosition": [
+        89.21972553082658,
+        58.08045425065326,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21972553082658,
+          "y": 58.08045425065326,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            40.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.89045934916761,
+          "y": 78.42886300363008,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            64.08
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 75.20189363900136,
+          "y": 90.49183101543237,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            61.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 27,
+      "time": 13.5,
+      "heroPosition": [
+        89.21976629128356,
+        56.88045425134552,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21976629128356,
+          "y": 56.88045425134552,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            50.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 87.97565571880843,
+          "y": 77.43249882392467,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            62.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 75.62509107342368,
+          "y": 89.5857935264186,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 28,
+      "time": 14.0,
+      "heroPosition": [
+        89.21978290520019,
+        55.68045425146053,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21978290520019,
+          "y": 55.68045425146053,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            40.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.0544038614052,
+          "y": 76.43560428083721,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            61.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 76.09545892531332,
+          "y": 88.70332308277263,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            64.08
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "time": 14.5,
+      "heroPosition": [
+        89.21979304963756,
+        54.48045425150341,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21979304963756,
+          "y": 54.48045425150341,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            30.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.12726216970528,
+          "y": 75.43826197906131,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 76.54854205173177,
+          "y": 87.81185481045168,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            62.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 30,
+      "time": 15.0,
+      "heroPosition": [
+        89.21980319407493,
+        53.28045425154629,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21980319407493,
+          "y": 53.28045425154629,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            30.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.22302643839672,
+          "y": 74.44285793805987,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            64.08
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 76.9848564769746,
+          "y": 86.91206054378567,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            61.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 31,
+      "time": 15.5,
+      "heroPosition": [
+        89.21980865074386,
+        52.08045425155869,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21980865074386,
+          "y": 52.08045425155869,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.30892978767011,
+          "y": 73.44655446291607,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            62.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 77.40492571634304,
+          "y": 86.004568486445,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 32,
+      "time": 16.0,
+      "heroPosition": [
+        89.21981410741279,
+        50.880454251571095,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21981410741279,
+          "y": 50.880454251571095,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.38612752649351,
+          "y": 72.44953866107512,
+          "intent": "pursue_target",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            61.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 77.87932238198898,
+          "y": 85.12425728941066,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            64.08
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 33,
+      "time": 16.5,
+      "heroPosition": [
+        89.21981956408172,
+        49.6804542515835,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21981956408172,
+          "y": 49.6804542515835,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.4556252976671,
+          "y": 71.45195655427794,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 78.33352470714806,
+          "y": 84.23335872738461,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            62.88
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 34,
+      "time": 17.0,
+      "heroPosition": [
+        89.21982502075065,
+        48.4804542515959,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21982502075065,
+          "y": 48.4804542515959,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.52512306884068,
+          "y": 70.45437444748076,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 78.76822995559561,
+          "y": 83.33278593911476,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            61.68
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 35,
+      "time": 17.5,
+      "heroPosition": [
+        89.21983047741958,
+        47.280454251608305,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21983047741958,
+          "y": 47.280454251608305,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.59462084001427,
+          "y": 69.45679234068358,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 79.18414711681537,
+          "y": 82.4233834347181,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 36,
+      "time": 18.0,
+      "heroPosition": [
+        89.21983593408851,
+        46.08045425162071,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21983593408851,
+          "y": 46.08045425162071,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.66411861118786,
+          "y": 68.4592102338864,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 79.60006427803512,
+          "y": 81.51398093032145,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 37,
+      "time": 18.5,
+      "heroPosition": [
+        89.21984139075744,
+        44.88045425163311,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21984139075744,
+          "y": 44.88045425163311,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.73361638236145,
+          "y": 67.46162812708921,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 80.01598143925487,
+          "y": 80.6045784259248,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 38,
+      "time": 19.0,
+      "heroPosition": [
+        89.21915878310317,
+        43.6804544457803,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21915878310317,
+          "y": 43.6804544457803,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.80311415353503,
+          "y": 66.46404602029203,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 80.43189860047463,
+          "y": 79.69517592152815,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 39,
+      "time": 19.5,
+      "heroPosition": [
+        89.2184761754489,
+        42.48045463992749,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.2184761754489,
+          "y": 42.48045463992749,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.87261192470862,
+          "y": 65.46646391349485,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 80.84781576169438,
+          "y": 78.7857734171315,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 40,
+      "time": 20.0,
+      "heroPosition": [
+        89.21845858300615,
+        41.28045464005644,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21845858300615,
+          "y": 41.28045464005644,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.218,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 88.87261192470862,
+          "y": 64.46646391349485,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 81.26373292291413,
+          "y": 77.87637091273484,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 41,
+      "time": 20.5,
+      "heroPosition": [
+        89.21844099056341,
+        40.080454640185394,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21844099056341,
+          "y": 40.080454640185394,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.218,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.57971870470863,
+          "y": 63.75935713349485,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 81.67965008413388,
+          "y": 76.96696840833819,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 42,
+      "time": 21.0,
+      "heroPosition": [
+        89.21842339812066,
+        38.88045464031435,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21842339812066,
+          "y": 38.88045464031435,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.218,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.57971870470863,
+          "y": 63.75935713349485,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 82.09556724535364,
+          "y": 76.05756590394154,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 43,
+      "time": 21.5,
+      "heroPosition": [
+        89.21840580567792,
+        37.6804546404433,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21840580567792,
+          "y": 37.6804546404433,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.218,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.28682548470863,
+          "y": 64.46646391349485,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 82.51148440657339,
+          "y": 75.14816339954488,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 44,
+      "time": 22.0,
+      "heroPosition": [
+        89.21760787940765,
+        36.4804549057293,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21760787940765,
+          "y": 36.4804549057293,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.28682548470863,
+          "y": 65.46646391349485,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 82.92740156779314,
+          "y": 74.23876089514823,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 45,
+      "time": 22.5,
+      "heroPosition": [
+        89.21680995313739,
+        35.280455171015305,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21680995313739,
+          "y": 35.280455171015305,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 83.34331872901289,
+          "y": 73.32935839075158,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 46,
+      "time": 23.0,
+      "heroPosition": [
+        89.2168189741868,
+        34.080455171049216,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.2168189741868,
+          "y": 34.080455171049216,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.217,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 83.75923589023265,
+          "y": 72.41995588635493,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 47,
+      "time": 23.5,
+      "heroPosition": [
+        89.21598083537431,
+        32.880455463747865,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21598083537431,
+          "y": 32.880455463747865,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 84.1751530514524,
+          "y": 71.51055338195827,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 48,
+      "time": 24.0,
+      "heroPosition": [
+        89.21514269656183,
+        31.680455756446513,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21514269656183,
+          "y": 31.680455756446513,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 84.5903284752691,
+          "y": 70.60081200801807,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            60.5
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "time": 24.5,
+      "heroPosition": [
+        89.21513479839419,
+        30.480455756472505,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21513479839419,
+          "y": 30.480455756472505,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.215,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 85.00550389908581,
+          "y": 69.69107063407786,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            60.5
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 50,
+      "time": 25.0,
+      "heroPosition": [
+        89.21511936413476,
+        29.28045575657176,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21511936413476,
+          "y": 29.28045575657176,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.215,
+            20.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 85.42156747924261,
+          "y": 68.78173510894585,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 51,
+      "time": 25.5,
+      "heroPosition": [
+        89.21511193500739,
+        28.08045575659476,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21511193500739,
+          "y": 28.08045575659476,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.215,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 85.83763105939941,
+          "y": 67.87239958381384,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 52,
+      "time": 26.0,
+      "heroPosition": [
+        89.21432623483261,
+        26.88045601381344,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21432623483261,
+          "y": 26.88045601381344,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 86.25258720428023,
+          "y": 66.9625581702556,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            60.5
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 53,
+      "time": 26.5,
+      "heroPosition": [
+        89.21354053465784,
+        25.68045627103212,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21354053465784,
+          "y": 25.68045627103212,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 86.66754334916105,
+          "y": 66.05271675669736,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            60.5
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 54,
+      "time": 27.0,
+      "heroPosition": [
+        89.21356719550145,
+        24.480456271328286,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21356719550145,
+          "y": 24.480456271328286,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.214,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 87.08396814461472,
+          "y": 65.14354659125452,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 55,
+      "time": 27.5,
+      "heroPosition": [
+        89.21359385634507,
+        23.280456271624452,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21359385634507,
+          "y": 23.280456271624452,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.214,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 87.50039294006838,
+          "y": 64.23437642581167,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.22,
+            60.48
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 56,
+      "time": 28.0,
+      "heroPosition": [
+        89.21270150317503,
+        22.08045660341374,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21270150317503,
+          "y": 22.08045660341374,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.20749972006838,
+          "y": 63.52726964581168,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 57,
+      "time": 28.5,
+      "heroPosition": [
+        89.21270150317503,
+        21.08045660341374,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21270150317503,
+          "y": 21.08045660341374,
+          "intent": "flee_threat",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20749972006838,
+          "y": 63.52726964581168,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 58,
+      "time": 29.0,
+      "heroPosition": [
+        89.91980828317503,
+        20.37334982341374,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91980828317503,
+          "y": 20.37334982341374,
+          "intent": "flee_threat",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.91460650006839,
+          "y": 64.23437642581167,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 59,
+      "time": 29.5,
+      "heroPosition": [
+        89.91982324804557,
+        19.173349823507053,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91982324804557,
+          "y": 19.173349823507053,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.92,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.91460650006839,
+          "y": 65.23437642581167,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 60,
+      "time": 30.0,
+      "heroPosition": [
+        89.91983821291612,
+        17.973349823600365,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91983821291612,
+          "y": 17.973349823600365,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.92,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20749972006838,
+          "y": 65.94148320581168,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 61,
+      "time": 30.5,
+      "heroPosition": [
+        89.91985317778666,
+        16.773349823693678,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91985317778666,
+          "y": 16.773349823693678,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.92,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20612147214193,
+          "y": 64.9414841555958,
+          "intent": "pursue_memory",
+          "movementSource": "llm_target",
+          "target": [
+            89.2,
+            60.5
+          ],
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 62,
+      "time": 31.0,
+      "heroPosition": [
+        89.91986814265721,
+        15.57334982378699,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91986814265721,
+          "y": 15.57334982378699,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.92,
+            5.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.49901469214193,
+          "y": 64.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 63,
+      "time": 31.5,
+      "heroPosition": [
+        89.91989653291016,
+        14.373349824122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91989653291016,
+          "y": 14.373349824122826,
+          "intent": "flee_threat",
+          "movementSource": "llm_target",
+          "target": [
+            89.92,
+            10.0
+          ],
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.49901469214193,
+          "y": 63.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 64,
+      "time": 32.0,
+      "heroPosition": [
+        89.21278975291015,
+        13.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21278975291015,
+          "y": 13.666243044122826,
+          "intent": "flee_threat",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20612147214193,
+          "y": 62.5272705955958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 65,
+      "time": 32.5,
+      "heroPosition": [
+        89.21278975291015,
+        12.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21278975291015,
+          "y": 12.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.20612147214193,
+          "y": 62.5272705955958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 66,
+      "time": 33.0,
+      "heroPosition": [
+        89.91989653291016,
+        11.959136264122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91989653291016,
+          "y": 11.959136264122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.91322825214193,
+          "y": 63.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 67,
+      "time": 33.5,
+      "heroPosition": [
+        90.91989653291016,
+        11.959136264122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 90.91989653291016,
+          "y": 11.959136264122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.91322825214193,
+          "y": 64.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 68,
+      "time": 34.0,
+      "heroPosition": [
+        91.62700331291016,
+        12.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 91.62700331291016,
+          "y": 12.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.20612147214193,
+          "y": 64.9414841555958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 69,
+      "time": 34.5,
+      "heroPosition": [
+        91.62700331291016,
+        13.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 91.62700331291016,
+          "y": 13.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20612147214193,
+          "y": 64.9414841555958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 70,
+      "time": 35.0,
+      "heroPosition": [
+        90.91989653291016,
+        14.373349824122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 90.91989653291016,
+          "y": 14.373349824122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.49901469214193,
+          "y": 64.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 71,
+      "time": 35.5,
+      "heroPosition": [
+        89.91989653291016,
+        14.373349824122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91989653291016,
+          "y": 14.373349824122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.49901469214193,
+          "y": 63.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 72,
+      "time": 36.0,
+      "heroPosition": [
+        89.21278975291015,
+        13.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21278975291015,
+          "y": 13.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20612147214193,
+          "y": 62.5272705955958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 73,
+      "time": 36.5,
+      "heroPosition": [
+        89.21278975291015,
+        12.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21278975291015,
+          "y": 12.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.20612147214193,
+          "y": 62.5272705955958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 74,
+      "time": 37.0,
+      "heroPosition": [
+        89.91989653291016,
+        11.959136264122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91989653291016,
+          "y": 11.959136264122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 62.128460219991936,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.91322825214193,
+          "y": 63.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 75,
+      "time": 37.5,
+      "heroPosition": [
+        90.91989653291016,
+        11.959136264122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 90.91989653291016,
+          "y": 11.959136264122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.91322825214193,
+          "y": 64.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 76,
+      "time": 38.0,
+      "heroPosition": [
+        91.62700331291016,
+        12.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 91.62700331291016,
+          "y": 12.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 91.6110330753093,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 90.20612147214193,
+          "y": 64.9414841555958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 77,
+      "time": 38.5,
+      "heroPosition": [
+        91.62700331291016,
+        13.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 91.62700331291016,
+          "y": 13.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 90.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20612147214193,
+          "y": 64.9414841555958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 78,
+      "time": 39.0,
+      "heroPosition": [
+        90.91989653291016,
+        14.373349824122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 90.91989653291016,
+          "y": 14.373349824122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.90392629530929,
+          "y": 64.54267377999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.49901469214193,
+          "y": 64.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 79,
+      "time": 39.5,
+      "heroPosition": [
+        89.91989653291016,
+        14.373349824122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.91989653291016,
+          "y": 14.373349824122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 63.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 88.49901469214193,
+          "y": 63.2343773755958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "step": 80,
+      "time": 40.0,
+      "heroPosition": [
+        89.21278975291015,
+        13.666243044122826,
+        0.0
+      ],
+      "agents": [
+        {
+          "id": "hero_1",
+          "role": "hero",
+          "x": 89.21278975291015,
+          "y": 13.666243044122826,
+          "intent": "explore_area",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 0,
+          "messagesReceived": 0,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_1",
+          "role": "villain",
+          "x": 89.19681951530929,
+          "y": 62.83556699999193,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        },
+        {
+          "id": "villain_2",
+          "role": "villain",
+          "x": 89.20612147214193,
+          "y": 62.5272705955958,
+          "intent": "pursue_memory",
+          "movementSource": "fallback_explore",
+          "target": null,
+          "messagesSent": 1,
+          "messagesReceived": 1,
+          "usedFallback": false
+        }
+      ]
+    }
+  ]
+}
